@@ -117,6 +117,7 @@ namespace d3 {
         if (!global_config.resolution_hack.active)
             return;
 
+        GfxGetDesiredDisplayModeHook::InstallAtSymbol("sym_GfxGetDesiredDisplayMode");
         GetRenderTargetCurrentResolutionHook::InstallAtSymbol("sym_get_render_target_current_resolution");
     }
 }  // namespace d3

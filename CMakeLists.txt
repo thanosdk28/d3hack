@@ -88,8 +88,13 @@ string(REGEX REPLACE "^0[xX]" "" EXL_PROGRAM_ID "${EXL_PROGRAM_ID}")
 
 get_filename_component(EXL_LINK_LD "${CMAKE_SOURCE_DIR}/misc/link.ld" ABSOLUTE)
 execute_process(COMMAND uname OUTPUT_VARIABLE EXL_UNAME)
-if(EXL_UNAME MATCHES "^MINGW")
-    string(REGEX REPLACE "^/([a-zA-Z])/" "\\1:/" EXL_LINK_LD "${EXL_LINK_LD}")
+if(EXL_UNAME MATCHES "^(MINGW|MSYS)")
+    execute_process(
+        COMMAND cygpath -w "${EXL_LINK_LD}"
+        OUTPUT_VARIABLE EXL_LINK_LD
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
+    string(REPLACE "\\" "/" EXL_LINK_LD "${EXL_LINK_LD}")
 endif()
 configure_file(${EXL_SPECS_TEMPLATE} ${CMAKE_BINARY_DIR}/exl.specs @ONLY)
 

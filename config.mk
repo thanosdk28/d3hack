@@ -40,7 +40,7 @@ FTP_USERNAME := anonymous
 FTP_PASSWORD :=
 
 # Settings for deploying to Ryu. Used by the deploy-ryu.sh script.
-RYU_WIN_PATH := /home/jester/AppData/Roaming/Ryujinx/
+RYU_WIN_PATH := /c/Users/User/AppData/Roaming/Ryujinx/
 RYU_MAC_PATH := /Users/dev/Library/Application Support/Ryujinx/
 
 # Settings for deploying to Yuzu. Used by the deploy-yuzu.sh script.
